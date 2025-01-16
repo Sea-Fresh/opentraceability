@@ -3,6 +3,8 @@ using OpenTraceability.Interfaces;
 using OpenTraceability.Mappers;
 using OpenTraceability.Mappers.EPCIS.XML;
 using OpenTraceability.Models.Events;
+using OpenTraceability.Models.SeaFresh;
+using OpenTraceability.Models.SeaFresh.Interfaces;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -64,12 +66,18 @@ namespace GS1.Mappers.EPCIS
             }
 
             XNamespace epcisNS = (doc.EPCISVersion == EPCISVersion.V2) ? Constants.EPCIS_2_NAMESPACE : Constants.EPCIS_1_NAMESPACE;
+            XNamespace fTNS = "http://ns.ftrace.com/epcis";
+            XNamespace fTFishNS = "http://ns.fish.ftrace.com";
 
             XDocument xDoc = EPCISDocumentBaseXMLMapper.WriteXml(doc, epcisNS, "EPCISDocument");
             if (xDoc.Root == null)
             {
                 throw new Exception("Failed to parse EPCISQueryDocument from xml string because after parsing the XDocument the Root property was null.");
             }
+
+            // Add namespaces to the root element
+            xDoc.Root.Add(new XAttribute(XNamespace.Xmlns + "fT", fTNS));
+            xDoc.Root.Add(new XAttribute(XNamespace.Xmlns + "fT_fish", fTFishNS));
 
             // write the events
             xDoc.Root.Add(new XElement("EPCISBody", new XElement("EventList")));
@@ -81,6 +89,14 @@ namespace GS1.Mappers.EPCIS
                 if (e.EventType == EventType.TransformationEvent && doc.EPCISVersion.Value == EPCISVersion.V1)
                 {
                     xEvent = new XElement("extension", xEvent);
+                }
+                if (xEvent != null && e is IILMDEvent<EventILMD> ilmdEvent && ilmdEvent.ILMD is IFTraceILMD fTraceILMD)
+                {
+                    var ilmdElement = xEvent.Element("extension")?.Element("ilmd");
+                    if (ilmdElement != null)
+                    {
+                        fTraceILMD.ApplyNamespacePrefixes(ilmdElement, fTNS, fTFishNS);
+                    }
                 }
                 if (xEvent != null)
                 {
