@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 namespace OpenTraceability.Models.SeaFresh
 {
     [XmlRoot("ilmd", Namespace = "http://ns.ftrace.com/epcis")]
-    public class PreservingILMD : EventILMD, IFTraceILMD
+    public class PreservingILMD : BaseFTraceILMD
     {
         [OpenTraceability("http://ns.ftrace.com/epcis", "useByDate")]
         [XmlElement("useByDate", Namespace = "http://ns.ftrace.com/epcis")]
@@ -28,7 +28,7 @@ namespace OpenTraceability.Models.SeaFresh
         [XmlElement("storageStateCode", Namespace = "http://ns.ftrace.com/epcis")]
         public string StorageStateCode { get; set; }
 
-        public void ApplyNamespacePrefixes(XElement ilmdElement, XNamespace fTNS, XNamespace fTFishNS)
+        public override void ApplyNamespacePrefixes(XElement ilmdElement, XNamespace fTNS, XNamespace fTFishNS)
         {
             foreach (var element in ilmdElement.Elements())
             {

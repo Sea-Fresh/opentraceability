@@ -6,7 +6,7 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 
 [XmlRoot("ilmd", Namespace = "http://ns.ftrace.com/epcis")]
-public class FishingILMD : EventILMD, IFTraceILMD
+public class FishingILMD : BaseFTraceILMD
 {
     [OpenTraceability("http://ns.ftrace.com/epcis", "bestBeforeDate")]
     [XmlElement("bestBeforeDate", Namespace = "http://ns.ftrace.com/epcis")]
@@ -33,7 +33,7 @@ public class FishingILMD : EventILMD, IFTraceILMD
     [XmlElement("vesselCatchInformation", Namespace = "http://ns.fish.ftrace.com")]
     public VesselCatchInformation VesselCatchInfo { get; set; }
 
-    public void ApplyNamespacePrefixes(XElement ilmdElement, XNamespace fTNS, XNamespace fTFishNS)
+    public override void ApplyNamespacePrefixes(XElement ilmdElement, XNamespace fTNS, XNamespace fTFishNS)
     {
         foreach (var element in ilmdElement.Elements())
         {
