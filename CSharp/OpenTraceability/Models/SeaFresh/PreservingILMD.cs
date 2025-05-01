@@ -14,15 +14,15 @@ namespace OpenTraceability.Models.SeaFresh
     {
         [OpenTraceability("http://ns.ftrace.com/epcis", "useByDate")]
         [XmlElement("useByDate", Namespace = "http://ns.ftrace.com/epcis")]
-        public DateTime UseByDate { get; set; }
+        public DateTime? UseByDate { get; set; }
 
         [OpenTraceability("http://ns.ftrace.com/epcis", "bestBeforeDate")]
         [XmlElement("bestBeforeDate", Namespace = "http://ns.ftrace.com/epcis")]
-        public DateTime BestBeforeDate { get; set; }
+        public string BestBeforeDate { get; set; }
 
         [OpenTraceability("http://ns.ftrace.com/epcis", "dateOfFreezing")]
         [XmlElement("dateOfFreezing", Namespace = "http://ns.ftrace.com/epcis")]
-        public DateTime DateOfFreezing { get; set; }
+        public DateTime? DateOfFreezing { get; set; }
 
         [OpenTraceability("http://ns.ftrace.com/epcis", "storageStateCode")]
         [XmlElement("storageStateCode", Namespace = "http://ns.ftrace.com/epcis")]

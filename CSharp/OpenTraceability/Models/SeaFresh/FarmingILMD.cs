@@ -18,11 +18,11 @@ namespace OpenTraceability.Models.SeaFresh
 
         [OpenTraceability("http://ns.ftrace.com/epcis", "catchingPeriodEnd")]
         [XmlElement("catchingPeriodEnd", Namespace = "http://ns.ftrace.com/epcis")]
-        public DateTime CatchingPeriodEnd { get; set; }
+        public DateTime? CatchingPeriodEnd { get; set; }
 
         [OpenTraceability("http://ns.ftrace.com/epcis", "bestBeforeDate")]
         [XmlElement("bestBeforeDate", Namespace = "http://ns.ftrace.com/epcis")]
-        public DateTime BestBeforeDate { get; set; }
+        public string BestBeforeDate { get; set; }
 
         [OpenTraceability("http://ns.ftrace.com/epcis", "storageStateCode")]
         [XmlElement("storageStateCode", Namespace = "http://ns.ftrace.com/epcis")]
