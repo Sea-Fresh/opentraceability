@@ -27,6 +27,6 @@ jobs:
     - name: Build
       run: dotnet build -c Release /p:Version=1.4.${{github.run_number}}-custom
     - name: Pack nugets
-      run: dotnet pack -c Release /p:Version=1.4.${{github.run_number}}-custom --no-build --output .
+      run: dotnet pack ./OpenTraceability/OpenTraceability.csproj -c Release /p:Version=1.4.${{github.run_number}}-custom --no-build --output .
     - name: Push to NuGet
       run: dotnet nuget push "*.nupkg" --source ${{ secrets.NUGET_SOURCE }} --api-key ${{ secrets.NUGET_API_KEY }}
