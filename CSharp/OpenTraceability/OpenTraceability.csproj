@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<PackageId>OpenTraceability.SeaFresh</PackageId>
-		<Version>1.4.*-custom</Version>
+		<Version>1.4.99-custom</Version>
 		<SynchReleaseVersion>false</SynchReleaseVersion>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<IncludeSymbols>true</IncludeSymbols>
