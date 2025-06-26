@@ -2,17 +2,23 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
+		<PackageId>OpenTraceability.SeaFresh</PackageId>
+		<Version>1.4.*-custom</Version>
 		<SynchReleaseVersion>false</SynchReleaseVersion>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
-		<Title>Open Traceability</Title>
-		<Description>Open source libraries for working with EPCIS in C#.</Description>
-		<Copyright>MIT</Copyright>
-		<PackageProjectUrl>https://github.com/ift-gftc/opentraceability</PackageProjectUrl>
+		<Authors>Seafresh</Authors>
+		<Company>Seafresh</Company>
+		<Title>Open Traceability for FTrace</Title>
+		<Description>Custom fork with SeaFresh extensions for Open Traceability and FTrace integration.</Description>
+		<Copyright>Copyright © Seafresh</Copyright>
+		<PackageProjectUrl>https://github.com/Seafresh/opentraceability</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<RepositoryUrl>https://github.com/ift-gftc/opentraceability</RepositoryUrl>
+		<RepositoryUrl>https://github.com/Seafresh/opentraceability</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<PackageTags>epcis;open;traceability;ift;gdst</PackageTags>
+		<PackageTags>epcis;ftrace;seafresh;custom</PackageTags>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
